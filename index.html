@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy – Flexana</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --surface: #161616;
+            --border: #2a2a2a;
+            --accent: #c8f065;
+            --accent-dim: rgba(200, 240, 101, 0.12);
+            --text: #e8e8e8;
+            --muted: #888;
+            --radius: 12px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            padding: 72px 24px 56px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(200, 240, 101, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            margin-bottom: 56px;
+        }
+
+        .toc-title {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+
+        @media (max-width: 500px) {
+            .toc ol {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toc li {
+            counter-increment: toc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .toc li::before {
+            content: counter(toc, decimal-leading-zero);
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+            min-width: 20px;
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 52px;
+            scroll-margin-top: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .section-num {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid rgba(200, 240, 101, 0.2);
+            border-radius: 6px;
+            padding: 3px 9px;
+            letter-spacing: 0.06em;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(20px, 3vw, 26px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            color: #bbb;
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #bbb;
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-hashed {
+            background: rgba(200, 240, 101, 0.1);
+            color: var(--accent);
+        }
+
+        .tag-event {
+            background: rgba(120, 180, 255, 0.1);
+            color: #78b4ff;
+        }
+
+        .tag-system {
+            background: rgba(255, 180, 80, 0.1);
+            color: #ffb450;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: 1fr 1fr;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 500px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+        }
+
+        .card-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Contact block */
+        .contact-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .contact-block a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 48px 0;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        footer strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Fade-in animation */
+        .container>* {
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .container>*:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .container>*:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .container>*:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .container>*:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .container>*:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-badge">
+            <span class="logo-dot"></span>
+            Flexana App
+        </div>
+        <h1>Privacy <em>Policy</em></h1>
+        <p class="subtitle">How we collect, use, and protect your personal information.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Effective date -->
+        <p style="color:var(--muted);font-size:13px;margin-bottom:40px;letter-spacing:0.02em;">
+            Effective date: <strong style="color:var(--text);">May 15, 2025</strong> &nbsp;·&nbsp; Last updated: <strong
+                style="color:var(--text);">May 15, 2026</strong>
+        </p>
+
+        <!-- TOC -->
+        <div class="toc">
+            <div class="toc-title">Table of Contents</div>
+            <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#data-collected">Data We Collect</a></li>
+                <li><a href="#how-we-use">How We Use Your Data</a></li>
+                <li><a href="#third-parties">Third-Party Services</a></li>
+                <li><a href="#data-retention">Data Retention</a></li>
+                <li><a href="#your-rights">Your Rights</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. Overview -->
+        <section id="overview">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2>Overview</h2>
+            </div>
+            <p>Flexana ("we," "us," or "our") operates the Flexana mobile application — a yoga and Reformer Pilates
+                class booking platform. This Privacy Policy explains how we collect, process, and safeguard your
+                personal data when you use our app.</p>
+            <p>By using Flexana, you agree to the practices described in this policy. If you do not agree, please
+                discontinue use of the application.</p>
+        </section>
+
+        <!-- 2. Data Collected -->
+        <section id="data-collected">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2>Data We Collect</h2>
+            </div>
+            <p>We collect the following categories of data when you use Flexana:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Full Name</strong></td>
+                        <td>Provided during account registration</td>
+                        <td><span class="tag tag-hashed">Hashed (SHA-256)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone Number</strong></td>
+                        <td>Used for account verification and contact</td>
+                        <td><span class="tag tag-hashed">Hashed (SHA-256)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email Address</strong></td>
+                        <td>Used for login and notifications</td>
+                        <td><span class="tag tag-hashed">Hashed (SHA-256)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>View Content</strong></td>
+                        <td>Classes and pages browsed within the app</td>
+                        <td><span class="tag tag-event">Event</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search</strong></td>
+                        <td>Search terms entered in the app</td>
+                        <td><span class="tag tag-event">Event</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Initiate Checkout</strong></td>
+                        <td>When a booking or purchase flow begins</td>
+                        <td><span class="tag tag-event">Event</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purchase</strong></td>
+                        <td>Completed class or package bookings</td>
+                        <td><span class="tag tag-event">Event</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Crash Reports</strong></td>
+                        <td>Automatic diagnostics to improve app stability</td>
+                        <td><span class="tag tag-system">System</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Personal identifiers (name, phone, email) are <strong>hashed using SHA-256</strong> before being
+                transmitted to any analytics or advertising service — meaning the raw values never leave your device in
+                plain text.</p>
+        </section>
+
+        <!-- 3. How we use -->
+        <section id="how-we-use">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2>How We Use Your Data</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Class Booking</div>
+                    <div class="card-desc">To process your Pilates and yoga session reservations and send confirmations.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔔</div>
+                    <div class="card-title">Notifications</div>
+                    <div class="card-desc">To send push notifications about bookings, promotions, and app updates.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Analytics</div>
+                    <div class="card-desc">To understand how users interact with the app and improve features.</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Advertising</div>
+                    <div class="card-desc">To measure ad performance and show relevant promotions via Meta (Facebook).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-title">Crash Monitoring</div>
+                    <div class="card-desc">To detect, diagnose, and fix technical issues to maintain app stability.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <div class="card-title">Payments</div>
+                    <div class="card-desc">To securely process transactions via our payment provider, Paymob.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Third parties -->
+        <section id="third-parties">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2>Third-Party Services</h2>
+            </div>
+            <p>Flexana integrates with the following third-party services, each governed by their own privacy policies:
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Firebase (Google)</strong></td>
+                        <td>Authentication, analytics, push notifications (FCM), and crash reporting (Crashlytics)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meta (Facebook) Conversions API</strong></td>
+                        <td>Server-side ad conversion tracking using hashed user data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paymob</strong></td>
+                        <td>Payment processing for class bookings and packages</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>We do not sell your personal data to any third party. Hashed identifiers shared with Meta are used solely
+                for conversion measurement and cannot be reverse-engineered into your original information.</p>
+        </section>
+
+        <!-- 5. Data Retention -->
+        <section id="data-retention">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2>Data Retention</h2>
+            </div>
+            <p>We retain your personal data for as long as your account is active or as necessary to provide services.
+                You may request deletion of your account and associated data at any time by contacting us. Crash and
+                analytics data may be retained in anonymized form for up to 24 months.</p>
+        </section>
+
+        <!-- 6. Your Rights -->
+        <section id="your-rights">
+            <div class="section-header">
+                <span class="section-num">06</span>
+                <h2>Your Rights</h2>
+            </div>
+            <p>Depending on your jurisdiction, you may have the right to:</p>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">Access</div>
+                    <div class="card-desc">Request a copy of the personal data we hold about you.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Rectification</div>
+                    <div class="card-desc">Correct inaccurate or incomplete personal data.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Erasure</div>
+                    <div class="card-desc">Request deletion of your data ("right to be forgotten").</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Opt-Out</div>
+                    <div class="card-desc">Opt out of ad tracking at any time via device settings.</div>
+                </div>
+            </div>
+            <p style="margin-top:16px;">To exercise any of these rights, contact us at the email below.</p>
+        </section>
+
+        <!-- 7. Children -->
+        <section id="children">
+            <div class="section-header">
+                <span class="section-num">07</span>
+                <h2>Children's Privacy</h2>
+            </div>
+            <p>Flexana is not intended for users under the age of 13. We do not knowingly collect personal data from
+                children. If you believe we have inadvertently collected such data, please contact us immediately and we
+                will take steps to delete it.</p>
+        </section>
+
+        <!-- 8. Changes -->
+        <section id="changes">
+            <div class="section-header">
+                <span class="section-num">08</span>
+                <h2>Changes to This Policy</h2>
+            </div>
+            <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date
+                at the top of this page. Continued use of the app after changes are posted constitutes your acceptance
+                of the updated policy. We encourage you to review this page periodically.</p>
+        </section>
+
+        <!-- 9. Contact -->
+        <section id="contact">
+            <div class="section-header">
+                <span class="section-num">09</span>
+                <h2>Contact Us</h2>
+            </div>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out:</p>
+            <div class="contact-block">
+                <strong>Flexana</strong><br />
+                Cairo, Egypt<br />
+                Email: <a href="mailto:support@flexana.app">support@flexana.app</a><br />
+                Website: <a href="https://felo05.github.io/flexana-privacy-policy/"
+                    target="_blank">https://felo05.github.io/flexana-privacy-policy/</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <strong>Flexana</strong> &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; © 2026 Flexana. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
